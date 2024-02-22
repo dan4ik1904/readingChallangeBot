@@ -8,14 +8,7 @@ const token = '6356508064:AAGJlsz8e2eZEDnmwDdjliTNPm6SLLTH4Pc';
 const bot = new Bot(token, {polling: true});
 
 const PORT = process.env.PORT || 3000
-
-  
- app.listen(PORT, () => {
-      console.log('bot sterted on PORT', PORT)
-})
-  
-app.get('/', (req, res) => {
-    bot.on('message', (msg) => {
+bot.on('message', (msg) => {
         try {
             const opts = {
                 reply_to_message_id: msg.message_id,
@@ -33,6 +26,11 @@ app.get('/', (req, res) => {
         }
         
     });
-    
+  
+ app.listen(PORT, () => {
+      console.log('bot sterted on PORT', PORT)
+})
+  
+app.get('/', (req, res) => {
       res.send('OK')
 })
